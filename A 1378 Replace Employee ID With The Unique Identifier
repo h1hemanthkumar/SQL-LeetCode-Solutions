@@ -1,0 +1,6 @@
+SELECT eu.unique_id,e.name
+FROM Employees as e
+LEFT JOIN EmployeeUNI as eu
+    ON e.id=eu.id;
+
+# As mention all the names of the employee with or without unique id need to display so the first table is Employees and second is EmployeeUNI all the name list of Employees should be visible not caring about unique id hence left join is made based on Employee id and EmployeesUNI id
