@@ -13,6 +13,7 @@ GROUP BY Visits.customer_id;
 
 
 
+#OR
 
 SELECT v.customer_id, 
 COUNT(*) AS count_no_trans 
@@ -24,8 +25,9 @@ WHERE NOT EXISTS (
 )
 GROUP BY v.customer_id;
 
-#Replaces LEFT JOIN with NOT EXISTS for better performance.
+# The query identifies customers who visited the mall but did not make any transactions using NOT EXISTS.  
 
-#More efficient indexing and query execution.
+# COUNT(*) counts such visits per customer_id, and GROUP BY ensures results are grouped by customer.  
 
-#Scales well for large data sizes.
+# This approach is efficient as it avoids unnecessary JOINs and directly filters non-transaction visits.
+
