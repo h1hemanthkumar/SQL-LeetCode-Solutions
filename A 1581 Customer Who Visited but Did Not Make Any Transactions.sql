@@ -10,3 +10,22 @@ GROUP BY Visits.customer_id;
 # And then select the transaction id that null 
 
 # Then it is group and then calculated the count 
+
+
+
+
+SELECT v.customer_id, 
+COUNT(*) AS count_no_trans 
+FROM Visits v
+WHERE NOT EXISTS (
+    SELECT 1  
+    FROM Transactions t 
+    WHERE t.visit_id = v.visit_id  
+)
+GROUP BY v.customer_id;
+
+#Replaces LEFT JOIN with NOT EXISTS for better performance.
+
+#More efficient indexing and query execution.
+
+#Scales well for large data sizes.
