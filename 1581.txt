@@ -1,8 +1,0 @@
--- Select the customer_id and count of visits without transactions
-SELECT v.customer_id, 
-COUNT(v.visit_id) AS count_no_trans  -- Count the number of visits where no transaction occurred
-FROM Visits AS v -- Perform a LEFT JOIN between Visits and Transactions tables
-LEFT JOIN Transactions AS t 
-ON v.visit_id = t.visit_id  -- Filter only those visits that do not have a matching record in Transactions (i.e., no transaction was made)
-WHERE t.visit_id IS NULL  -- Group by customer_id to count such visits for each customer
-GROUP BY v.customer_id;
